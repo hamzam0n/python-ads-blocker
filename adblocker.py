@@ -51,6 +51,12 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 """
 
+if len(sys.argv) != 2 : 
+	howToUse()
+	exit()
+if not sys.argv[1].lower()   in("block","unblock"):
+	howToUse()
+	exit()
 
 URL = "https://pgl.yoyo.org/as/serverlist.php?showintro=1&mimetype=plaintext"
 page = requests.get(URL)
@@ -61,10 +67,6 @@ if "linux" in platform.platform().lower():
 elif "windows" in platform.platform().lower():
 	host_path = r"c:\windows\system32\drivers\etc\hosts"
 	default = default_windows
-
-if len(sys.argv) != 2 : 
-	howToUse()
-	exit()
 
 
 if sys.argv[1].lower() == "block" :
