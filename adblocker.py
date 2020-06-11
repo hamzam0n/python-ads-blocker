@@ -59,7 +59,12 @@ if not sys.argv[1].lower()   in("block","unblock"):
 	exit()
 
 URL = "https://pgl.yoyo.org/as/serverlist.php?showintro=1&mimetype=plaintext"
-page = requests.get(URL)
+try :
+	page = requests.get(URL)
+except :
+	print(Fore.RED + "\n	[-] Error! Please, check your connexion ... \n")
+	exit()
+
 if "linux" in platform.platform().lower():
 	host_path = "/etc/hosts"
 	default = default_linux
